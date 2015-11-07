@@ -18,4 +18,4 @@ class MemectSpiderItem(scrapy.Item):
     link = scrapy.Field()
     tag = scrapy.Field()
     keyword = scrapy.Field()
-    crwal_from = scrapy.Field()
+    crawl_from = scrapy.Field()

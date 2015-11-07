@@ -13,7 +13,6 @@ class MemectSpiderPipeline(object):
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
-        self.all_link = []
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -31,7 +30,10 @@ class MemectSpiderPipeline(object):
 
     def process_item(self, item, spider):
         collection_name = item.__class__.__name__
-        if item['link'] and item['link'][0] not in self.all_link:
-            self.all_link.extend(item['link'])
+        try:
+            saved = self.db[collection_name].find_one({"link":item['link']})
+        except Exception, e:
+            raise e
+        if saved == None:
             self.db[collection_name].insert(dict(item))
         return item
