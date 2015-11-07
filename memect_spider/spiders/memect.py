@@ -62,7 +62,10 @@ class MemectSpider(CrawlSpider):
             for index in range(len(i['link'])):
                 print i['link'][index], 'is ', 't.cn' in str(i['link'][index])
                 if 't.cn' in str(i['link'][index]):
-                    i['link'][index] = urllib.urlopen(str(i['link'][index])).url
+                    try:
+                        i['link'][index] = urllib.urlopen(str(i['link'][index])).url
+                    except Exception, e:
+                        print e
             yield i
 
 
