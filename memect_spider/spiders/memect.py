@@ -54,8 +54,8 @@ class MemectSpider(CrawlSpider):
             i['source_name'] = res.css('b[class=screen_name]::text').extract()
             i['source_link'] = res.css('a[class=link_weibo_source]::attr(href)').extract()
             i['time'] = res.css('span[class=datetime]::text').extract()
-            i['intro'] = res.css('div[class=text]::text').extract()
-            i['link'] = res.xpath('.//div[contains(@class, "text")]/a/@href').extract()
+            i['intro'] = res.xpath('.//div[contains(@class, "text")]//text()').extract()
+            i['link'] = res.xpath('.//div[contains(@class, "text")]//a/@href').extract()
             i['keyword'] = res.xpath('.//span[contains(@class, "keyword")]/text()').extract()
             i['crawl_from'] = response.url
 
