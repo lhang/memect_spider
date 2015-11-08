@@ -16,7 +16,7 @@ NEWSPIDER_MODULE = 'memect_spider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'memect_spider (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS=10
@@ -26,11 +26,11 @@ NEWSPIDER_MODULE = 'memect_spider.spiders'
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY=3
 # The download delay setting will honor only one of:
-# CONCURRENT_REQUESTS_PER_DOMAIN=6
+CONCURRENT_REQUESTS_PER_DOMAIN=6
 #CONCURRENT_REQUESTS_PER_IP=16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED=False
+COOKIES_ENABLED=False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED=False
@@ -68,13 +68,13 @@ ITEM_PIPELINES = {
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
-# AUTOTHROTTLE_ENABLED=True
+AUTOTHROTTLE_ENABLED=True
 # The initial download delay
 #AUTOTHROTTLE_START_DELAY=5
 # The maximum download delay to be set in case of high latencies
 # AUTOTHROTTLE_MAX_DELAY=60
 # Enable showing throttling stats for every response received:
-#AUTOTHROTTLE_DEBUG=False
+# AUTOTHROTTLE_DEBUG=False
 
 # Enable and configure HTTP caching (disabled by default)
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings

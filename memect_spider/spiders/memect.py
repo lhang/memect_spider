@@ -33,7 +33,6 @@ class MemectSpider(CrawlSpider):
     def link_filter(self, links):
         ret = []
         for link in links:
-            print 'link is', link.url
             if link and self.db.MemectSpiderItem.find_one({"crawl_from": link.url}):
                 print '已经爬取过，丢弃：', link.url
             elif link:
