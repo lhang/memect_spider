@@ -40,19 +40,24 @@ def index(tag=all, page=1):
     collection = client.items.MemectSpiderItem
     tags = []
     items = []
+    keyword = []
     for i in collection.find():
-        print 'is in ?', '日报'
-        if u'日报' in i['tag'] and (tag in i['tag'] or tag == 'all'):
+        if tag in i['tag'] or tag == 'all' or tag in i['keyword']:
             items.append(i)
         if u'日报' in i['tag']:
             for j in i['tag']:
                 if '-' not in j and j not in tags:
                     tags.append(j)
+        else:
+            for k in i['keyword']:
+                if k not in keyword:
+                    keyword.append(k)
 
     return render_template('index.html',
                             items = items,
                             current_page = page,
-                            tags = tags)
+                            tags = tags,
+                            keyword = keyword)
 
 
 if __name__ == '__main__':

@@ -36,4 +36,5 @@ class MemectSpiderPipeline(object):
             raise e
         if saved == None:
             self.db[collection_name].insert(dict(item))
+        self.db['crawledLink'].insert({"link":item['crawl_from']})
         return item
