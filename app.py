@@ -35,7 +35,7 @@ app = Flask(__name__)
 
 @app.route('/')
 @app.route('/<tag>/<page>')
-def index(tag=all, page=1):
+def index(tag='all', page=1):
     client = pymongo.MongoClient('localhost', 27017)
     collection = client.items.MemectSpiderItem
     page = int(page)
