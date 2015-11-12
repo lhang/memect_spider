@@ -97,7 +97,7 @@
         <div class="pure-g">
             <ul class="pure-paginator">
                 <li><a class="pure-button prev" href="{{url_for('index', tag=current_tag, page=1)}}">&#171;</a></li>
-                {% for i in range(current_page-4 if current_page>4 else 1, current_page+4 if (current_page-4)<max_page else max_page) %}
+                {% for i in range(current_page-4 if current_page>4 else 1, current_page+4 if (current_page+4)<max_page else max_page) %}
                     {% if current_page == i %}
                         <li><a class="pure-button" href="{{url_for('index', tag=current_tag, page=i)}}">{{i}}</a></li>
                     {% else %}

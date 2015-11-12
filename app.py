@@ -55,7 +55,7 @@ def index(tag='all', page=1):
                     keyword.append(k)
 
     return render_template('index.html',
-                            items = items[page-1:page*50-1],
+                            items = items[(page-1)*50:page*50],
                             current_page = page,
                             current_tag = tag,
                             max_page = len(items)/50,
