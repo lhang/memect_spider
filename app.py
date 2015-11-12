@@ -38,10 +38,11 @@ app = Flask(__name__)
 def index(tag=all, page=1):
     client = pymongo.MongoClient('localhost', 27017)
     collection = client.items.MemectSpiderItem
+    page = int(page)
     tags = []
     items = []
     keyword = []
-    for i in collection.find():
+    for i in collection.find().sort("time", pymongo.DESCENDING):
         if tag in i['tag'] or tag == 'all' or tag in i['keyword']:
             items.append(i)
         if u'日报' in i['tag']:
@@ -54,8 +55,10 @@ def index(tag=all, page=1):
                     keyword.append(k)
 
     return render_template('index.html',
-                            items = items,
+                            items = items[page-1:page*50-1],
                             current_page = page,
+                            current_tag = tag,
+                            max_page = len(items)/50,
                             tags = tags,
                             keyword = keyword)
 

@@ -15,7 +15,7 @@ class MemectSpider(CrawlSpider):
     start_urls = ['http://forum.memect.com/']
 
     rules = (
-        Rule(LinkExtractor(allow=r'/page/'), callback='parse_list', follow=True),
+        Rule(LinkExtractor(allow=r'/page/'), callback='parse_list', follow=False),
         Rule(LinkExtractor(allow=r'/blog/'), callback='parse_item', process_links='link_filter', follow=False),
     )
 

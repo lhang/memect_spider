@@ -11,27 +11,12 @@
 
 
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-
-
-
-
-
-
-
-
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
     <![endif]-->
     <!--[if gt IE 8]><!-->
         <link rel="stylesheet" href="/static/css/layouts/side-menu.css">
     <!--<![endif]-->
-
-
-
-
-
-
-
     <script>
     var _hmt = _hmt || [];
     (function() {
@@ -42,13 +27,23 @@
     })();
     </script>
 
+<style type="text/css">
+    .pure-paginator{
+        margin: auto;
+    }
+    .footer{
+        background-color: #999;
+        margin-top: 4em;
+    }
+    .footer p{
+        margin-top: 3em;
+        text-align: center;
+        height: 5em;
+        color: white;
+    }
+</style>
 </head>
 <body>
-
-
-
-
-
 
 <div id="layout">
     <!-- Menu toggle -->
@@ -97,8 +92,29 @@
                 <a href="{{url_for('index', tag=tag, page=1)}}" class="button-xsmall pure-button">{{tag}}</a>
             {% endfor %}
             {% endfor %}
-
         </div>
+
+        <div class="pure-g">
+            <ul class="pure-paginator">
+                <li><a class="pure-button prev" href="{{url_for('index', tag=current_tag, page=1)}}">&#171;</a></li>
+                {% for i in range(current_page-4 if current_page>4 else 1, current_page+4 if (current_page-4)<max_page else max_page) %}
+                    {% if current_page == i %}
+                        <li><a class="pure-button" href="{{url_for('index', tag=current_tag, page=i)}}">{{i}}</a></li>
+                    {% else %}
+                        <li><a class="pure-button pure-button-active" href="{{url_for('index', tag=current_tag, page=i)}}">{{i}}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li><a class="pure-button next" href="{{url_for('index', tag=current_tag, page=max_page)}}">&#187;</a></li>
+            </ul>
+        </div>
+
+        <div class="footer l-box center-block">
+            <p>
+                数据源来自<a href="http://forum.memect.com">好东西论坛</a>
+            </p>
+        </div>
+
+
     </div>
 </div>
 
