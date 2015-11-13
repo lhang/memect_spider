@@ -16,15 +16,15 @@ NEWSPIDER_MODULE = 'memect_spider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36'
+USER_AGENT = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en) Opera 8.0'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS=100
+# CONCURRENT_REQUESTS=2
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY=3
+DOWNLOAD_DELAY=5
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN=6
 #CONCURRENT_REQUESTS_PER_IP=16
